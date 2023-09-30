@@ -20,13 +20,25 @@ export default {
     },
     tryEditPersonalData(){
       this.errorMessage = true;
-      this.errorMessage = validatePersonalInformation(this.userInfo);
-      if(!this.errorMessage){
-        accountService.methods.updatePersonalInformation(this.userInfo)
-            .then((response)=>{
-              this.$emit("logged")
-            })
-      }
+      validatePersonalInformation(this.userInfo)
+          .then((response)=>{
+            if(!response){
+              accountService.methods.updatePersonalInformation(this.userInfo)
+                  .then((response)=>{
+                    if(response && response.id > 0) this.$emit("logged")
+                    else console.log(response)
+                  })
+                  .catch((error)=>{
+                    console.log("error")
+                  })
+            }
+            else{
+              this.errorMessage = response;
+            }
+          })
+          .catch((error)=>{
+            console.log(error)
+          })
     },
     getMode(newDarkMode){
       this.isDarkMode = newDarkMode;
@@ -53,10 +65,9 @@ export default {
 </script>
 
 <template>
-
-  <div v-if="isUserLogged && errorMessage !== true">
-    <div class="medium-margin flex flex-col align-center">
-      <div class="text-10 little-margin">Editar Informacion Personal</div>
+  <div v-if="isUserLogged && (errorMessage !== true)">
+    <div class="margin-2 flex flex-col align-center">
+      <div class="text-10 margin-1">Editar Informacion Personal</div>
     </div>
     <div class="flex align-center flex-col">
       <div class="flex flex-col login gap-1">
@@ -66,16 +77,16 @@ export default {
         <pv-dropdown v-model="userInfo.personal.genre" :options="genreList" optionLabel="name" option-value="value" placeholder="Elija su sexo"></pv-dropdown>
         <small class="p-error text" id="text-error">{{ errorMessage || ' ' }}</small>
       </div>
-      <div class="flex flex-row login gap-2 medium-margin">
+      <div class="flex flex-row login gap-2 margin-2">
         <pv-button label="Cancelar" size="large" severity="secondary" outlined rounded @click="this.$emit('logged')"/>
-        <pv-button :label="this.userInfo.shipping.district?'Actualizar':'Registrar'" size="large" severity="secondary" rounded @click="tryEditPersonalData"/>
+        <pv-button :label="'Actualizar'" size="large" severity="secondary" rounded @click="tryEditPersonalData"/>
       </div>
     </div>
   </div>
   <div v-else-if="errorMessage === true">
-    <div class="medium-margin flex flex-col align-center">
-      <div class="text-10 little-margin">{{this.userInfo.shipping.district?"Actualizando Direccion...":"Creando Direccion..."}}</div>
-      <div class="little-margin"><pv-progress-bar style="width: 24rem" mode="indeterminate"/></div>
+    <div class="margin-2 flex flex-col align-center">
+      <div class="text-10 margin-1">Actualizando Datos Personales...</div>
+      <div class="margin-1"><pv-progress-bar style="width: 24rem" mode="indeterminate"/></div>
     </div>
   </div>
   <div v-else-if="!isUserLogged">

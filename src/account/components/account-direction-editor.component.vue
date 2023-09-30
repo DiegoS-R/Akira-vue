@@ -93,8 +93,8 @@ export default {
 <template>
 
   <div v-if="isUserLogged && errorMessage !== true">
-    <div class="medium-margin flex flex-col align-center">
-      <div class="text-10 little-margin">{{this.userInfo.shipping.district?"Actualizar Direccion":"Crear Direccion"}}</div>
+    <div class="margin-2 flex flex-col align-center">
+      <div class="text-10 margin-1">{{this.userInfo.shipping.district?"Actualizar Direccion":"Crear Direccion"}}</div>
     </div>
     <div class="flex align-center flex-col">
       <div class="flex flex-col login gap-1">
@@ -105,16 +105,16 @@ export default {
         <small class="p-error text" id="text-error">{{ errorMessage || ' ' }}</small>
 
       </div>
-      <div class="flex flex-row login gap-2 medium-margin">
+      <div class="flex flex-row login gap-2 margin-2">
         <pv-button label="Cancelar" size="large" severity="secondary" outlined rounded @click="this.$emit('logged')"/>
         <pv-button :label="this.userInfo.shipping.district?'Actualizar':'Registrar'" size="large" severity="secondary" rounded @click="tryEditDirection"/>
       </div>
     </div>
   </div>
   <div v-else-if="errorMessage === true">
-    <div class="medium-margin flex flex-col align-center">
-      <div class="text-10 little-margin">{{this.userInfo.shipping.district?"Actualizando Direccion...":"Creando Direccion..."}}</div>
-      <div class="little-margin"><pv-progress-bar style="width: 24rem" mode="indeterminate"/></div>
+    <div class="margin-2 flex flex-col align-center">
+      <div class="text-10 margin-1">{{this.userInfo.shipping.district?"Actualizando Direccion...":"Creando Direccion..."}}</div>
+      <div class="margin-1"><pv-progress-bar style="width: 24rem" mode="indeterminate"/></div>
     </div>
   </div>
   <div v-else-if="!isUserLogged">

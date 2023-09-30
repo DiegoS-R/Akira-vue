@@ -96,8 +96,8 @@ export default {
 </script>
 
 <template>
-  <div class="medium-margin flex flex-col align-center">
-    <div class="text-10 little-margin">{{(completedPercentage === 100)?"Registrando...":"Regístrate"}}</div>
+  <div class="margin-2 flex flex-col align-center">
+    <div class="text-10 margin-1">{{(completedPercentage === 100)?"Registrando...":"Regístrate"}}</div>
     <pv-progress-bar :value="completedPercentage" style="width: 24rem" :mode="progressBarMode">
       &nbsp;
     </pv-progress-bar>

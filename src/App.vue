@@ -17,6 +17,7 @@ export default {
     return{
       littleProfileOpened: false,
       userInfo: undefined,
+      lastSelectedProduct: undefined,
     }
   },
   methods:{
@@ -40,8 +41,10 @@ export default {
     search(data){
       console.log("searching ", data);
     },
-    showProduct(data){
-      console.log("showing ",data)
+    showProduct(product){
+      console.log("showing ",product)
+      this.lastSelectedProduct = product;
+      this.$router.push("/product");
     },
     myAccount(){
       this.$router.push("/account");
@@ -59,7 +62,7 @@ export default {
     register_success(){
       this.$toast.add({severity:'success', summary:'La cuenta se registró con éxito', life: 5000})
       this.logged();
-    }
+    },
   },
   created() {
     this.userInfo = accountService.methods.watchUser((newUserInfo)=>{this.userInfo = newUserInfo})
@@ -70,15 +73,32 @@ export default {
 <template>
   <div id="app">
     <header>
-      <navbarComponent @logo="logoClicked" @cart="cartClicked" @user="userClicked" @search="search" @product="showProduct"/>
-      <profileMiniComponent :open-clicked="littleProfileOpened" @account="myAccount" @orders="myAccount" @logout="logOut" @closed="littleProfileClosed"/>
-      <pv-toast/>
+      <navbarComponent
+          @logo="logoClicked"
+          @cart="cartClicked"
+          @user="userClicked"
+          @search="search"
+          @product="showProduct"/>
+      <profileMiniComponent
+          :open-clicked="littleProfileOpened"
+          @account="myAccount"
+          @orders="myAccount"
+          @logout="logOut"
+          @closed="littleProfileClosed"
+      />
     </header>
     <main>
       <pv-scroll-top />
       <div class="header-area"/>
-      <div class="content-margin">
-        <RouterView @logged="logged" @register_error="register_error" @register_success="register_success"/>
+      <div>
+     
+        <RouterView
+            @logged="logged"
+            @register_error="register_error"
+            @register_success="register_success"
+            @product="showProduct"
+            :product="lastSelectedProduct"
+        />
       </div>
     </main>
     <footer>

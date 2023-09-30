@@ -78,6 +78,9 @@ header{
     width: 100%;
     //width:auto;
 }
+.width-auto{
+    width: auto;
+}
 .width-full > div {
     width: 100%;
 }
@@ -120,17 +123,16 @@ header{
 .content-margin{
     padding: 5rem;
 }
-.little-margin{
-    padding: 1rem;
-}
-.medium-margin{
-    padding: 2rem;
-}
 
-.little-margin-width{
-    padding-left: 1rem;
-    padding-right: 1rem;
-}
+.margin-1{ padding: 1rem; }
+.margin-1-width{ padding-left: 1rem; padding-right: 1rem; }
+.margin-1-height{ padding-top: 1rem; padding-bottom: 1rem; }
+.margin-2{ padding: 2rem;}
+.margin-2-width{ padding-left: 2rem; padding-right: 2rem; }
+.margin-2-height{ padding-top: 2rem; padding-bottom: 2rem; }
+.margin-3{ padding: 3rem;}
+.margin-3-width{ padding-left: 3rem; padding-right: 3rem; }
+.margin-3-height{ padding-top: 3rem; padding-bottom: 3rem; }
 
 .gap-1{ gap: 0.5rem; }
 .gap-2{ gap: 1rem; }
@@ -148,21 +150,6 @@ header{
 
 .left-padding-1{ padding-left: 1rem; }
 .left-padding-2{ padding-left: 2rem; }
-
-
-.width-padding-1{
-    padding-right: 1rem;
-    padding-left: 1rem;
-}
-.width-padding-2{
-    padding-right: 2rem;
-    padding-left: 2rem;
-}
-.width-padding-3{
-    padding-right: 3rem;
-    padding-left: 3rem;
-}
-
 
 
 //footer
@@ -203,6 +190,9 @@ header{
     align-content: center;
     text-align: center;
     justify-content: center;
+}
+.align-grid{
+    display: flex;
 }
 .payment-image img {
     height:1.4rem;

@@ -46,12 +46,12 @@ export default {
       <div id="accountWelcomeText">{{this.userInfo.personal.genre?"Bienvenido":"Bienvenida"}},</div>
       <div id="accountUserText">{{this.userInfo.personal.firstName}}</div>
     </div>
-    <div class="little-margin"/>
+    <div class="margin-1"/>
     <div class="flex flex-row gap-8">
-      <pv-card class="profile-data-card little-margin">
+      <pv-card class="profile-data-card margin-1">
         <template #title><div class="align-center text-4"> Información Personal: </div></template>
         <template #content>
-          <div class="text-1 little-margin-width">
+          <div class="text-1 margin-1-width">
             <div class="flex-row flex-justify-content gap-1">
                 <div class="main-text">Nombre:</div>
                 <div class="text">{{this.userInfo.personal.firstName + " " + this.userInfo.personal.lastName}}</div>
@@ -75,10 +75,10 @@ export default {
           </div>
         </template>
       </pv-card>
-      <pv-card class="profile-data-card little-margin">
+      <pv-card class="profile-data-card margin-1">
         <template #title><div class="align-center text-4"> Información de Compras: </div></template>
         <template #content>
-          <div class="text-1 little-margin-width">
+          <div class="text-1 margin-1-width">
             <div v-if="this.userInfo.shipping.address">
               <div class="flex-row flex-justify-content gap-1">
                 <div class="main-text">Direccion:</div>
