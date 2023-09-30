@@ -30,6 +30,7 @@ header{
     white-space: nowrap;
     font-family: 'Montserrat Light', sans-serif;
 }
+.text-0{ font-size: 0.8rem; }
 .text-1{ font-size: 1.2rem; }
 .text-2{ font-size: 1.4rem; }
 .text-3{ font-size: 1.6rem; }
@@ -44,6 +45,10 @@ header{
 .text {
     white-space: nowrap;
     overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: 'Montserrat Light', sans-serif;
+}
+.montserrat{
     text-overflow: ellipsis;
     font-family: 'Montserrat Light', sans-serif;
 }
@@ -64,12 +69,20 @@ header{
     display: flex;
     flex-direction: row;
 }
-.w-full {
+.flex-auto{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.width-full {
     width: 100%;
     //width:auto;
 }
-.w-full > div {
+.width-full > div {
     width: 100%;
+}
+.width-min {
+    width: min-content;
 }
 .wrapper {
     min-height: 60vh;

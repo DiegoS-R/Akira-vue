@@ -36,9 +36,9 @@ export default {
 
 
 <template>
-  <pv-toolbar id="footer" class="footer w-full">
+  <pv-toolbar id="footer" class="footer width-full">
     <template #start>
-      <div class="flex flex-justify-content flex-col w-full">
+      <div class="flex flex-justify-content flex-col width-full">
         <div class="flex flex-justify-content flex-row">
           <div/>
           <pv-image :src="`/images/logos/${this.currentMode}/logo.png`" alt="Akira" class="footer-logo"/>
@@ -60,7 +60,7 @@ export default {
           <div/>
         </div>
         <pv-divider/>
-        <div class="flex flex-justify-content flex-row w-full">
+        <div class="flex flex-justify-content flex-row width-full">
           <div class="flex flex-justify-content text width-padding-3">&copy; Akira, Lambders 2022</div>
           <pv-image src="/images/logos/methods.png" alt="Metodos de Pago" class="payment-image width-padding-3"/>
         </div>
